@@ -2,7 +2,7 @@
 
 /**
  * Функция, преобразующая вложенный массив в плоский массив
- * @param {Array} array - массив чисел
+ * @param {Array} array - массив данных любого типа
  * 
  * @example
  * // returns [1, 2, 3, 4]
@@ -12,9 +12,14 @@
  */
 
 const flatten = array => {
-    let arr = [];
-    for (let i = 0; i < array.length; i++) {
-        Array.isArray(array[i]) ? arr = arr.concat(flatten(array[i])) : arr.push(array[i]);
+    if (!Array.isArray(array)) {
+        throw new TypeError("Параметр должен быть массивом");
     }
+
+    let arr = [];
+    array.forEach(item => {
+        Array.isArray(item) ? arr = arr.concat(flatten(item)) : arr.push(item);
+    });
+
     return arr;
 };
