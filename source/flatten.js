@@ -10,7 +10,6 @@
  * 
  * @returns {Array}
  */
-
 const flatten = array => {
     if (!Array.isArray(array)) {
         throw new TypeError("Параметр должен быть массивом");
