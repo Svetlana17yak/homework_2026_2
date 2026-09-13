@@ -15,9 +15,9 @@ const flatten = array => {
         throw new TypeError("Параметр должен быть массивом");
     }
 
-    let arr = [];
+    const arr = [];
     array.forEach(item => {
-        Array.isArray(item) ? arr = arr.concat(flatten(item)) : arr.push(item);
+        Array.isArray(item) ? arr.push(...flatten(item)) : arr.push(item);
     });
 
     return arr;
